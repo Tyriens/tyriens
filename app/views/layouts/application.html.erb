@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" class="h-full overflow-x-hidden">
   <head>
-    <title>Tofr</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tyriens.fr</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
+    <link href="/assets/vendors/common/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendors/common/swiper/css/swiper-bundle.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="antialiased tracking-tight font-base text-gray-500 text-base h-full bg-white dark:bg-gray-900 overflow-x-hidden">
+    <div id="site-wrapper" class="flex flex-col h-full js-site-wrapper">
+      <div class="header-wrapper bg-accent text-white relative z-30">
+        <%= render "header" %>
+        <%= yield :hero %>
+      </div>
+      <%= render "mobile_menu" %>
       <%= yield %>
-    </main>
+      <%= render "footer" %>
+    </div>
+
+    <script src="/assets/vendors/common/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendors/common/swiper/js/swiper-bundle.min.js"></script>
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/yt1/init.js"></script>
   </body>
 </html>
