@@ -77,5 +77,7 @@ group :test do
 end
 
 gem "devise"
+gem "discordrb"
+gem "faraday"
 gem "omniauth-discord"
 gem "omniauth-rails_csrf_protection"

@@ -1,0 +1,9 @@
+{
+  "name": "tyriens",
+  "description": "Tyriens.fr",
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rails db:migrate"
+    }
+  }
+}

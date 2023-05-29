@@ -14,7 +14,11 @@
                 <%= link_to "Mon Profil", edit_profile_path, class: "text-lg transition-all text-primary opacity-100 hover:text-accent dark:text-white dark:hover:text-accent" %>
               </li>
               <li class="">
-                <%= link_to "Ma Galerie (prochainement)", "#", class: "text-lg transition-all text-primary opacity-100 hover:text-accent dark:text-white dark:hover:text-accent" %>
+                <% if current_user.images.any? %>
+                  <%= link_to "Ma Galerie (prochainement avec #{pluralize(current_user.images.count, "image")})", "#", class: "text-lg transition-all text-primary opacity-100 hover:text-accent dark:text-white dark:hover:text-accent" %>
+                <% else %>
+                  <%= link_to "Ma Galerie (prochainement)", "#", class: "text-lg transition-all text-primary opacity-100 hover:text-accent dark:text-white dark:hover:text-accent" %>
+                <% end %>
               </li>
               <li class="mt-5">
                 <%= form_with(url: profile_path, method: :delete) do |form| %>
