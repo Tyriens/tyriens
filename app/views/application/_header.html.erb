@@ -53,17 +53,22 @@
           </a>
 
           <ul class="sub-menu invisible absolute right-full z-20 -mr-9 flex w-52 origin-top-right flex-col bg-white dark:bg-gray-800 py-5 text-sm font-bold opacity-0 shadow-2xl transition-all">
-            <li class="px-7">
-              <% if current_user %>
+            <% if current_user %>
+              <li class="px-7">
+                <%= link_to "Mon Profil", edit_profile_path, class: "flex flex-row-reverse items-center justify-between py-2 text-primary dark:text-white transition-colors hover:text-accent dark:hover:text-accent" %>
+              </li>
+              <li class="px-7">
                 <%= form_with url: destroy_user_session_path, method: :delete do |form| %>
                   <%= form.submit "Déconnexion", class: "flex flex-row-reverse items-center justify-between py-2 text-primary dark:text-white transition-colors hover:text-accent dark:hover:text-accent" %>
                 <% end %>
-              <% else %>
+              </li>
+            <% else %>
+              <li class="px-7">
                 <%= form_with(url: omniauth_authorize_path(:user, :discord), method: :post) do |form| %>
                   <%= form.submit "Connexion avec Discord", class: "flex flex-row-reverse items-center justify-between py-2 text-primary dark:text-white transition-colors hover:text-accent dark:hover:text-accent" %>
-              <% end %>
+                <% end %>
+              </li>
             <% end %>
-            </li>
           </ul>
 
         </div>

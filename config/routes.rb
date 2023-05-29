@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     sessions: "users/sessions"
   }
 
+  resource :profile, only: [:edit, :update, :destroy]
   get :creators, to: "pages#creators"
   root "pages#index"
 end
