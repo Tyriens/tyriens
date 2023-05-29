@@ -22,7 +22,9 @@
         <%= yield :hero %>
       </div>
       <%= render "mobile_menu" %>
-      <%= yield %>
+      <main id="main-content" class="grow lg:pt-0">
+        <%= yield %>
+      </main>
       <%= render "footer" %>
     </div>
 

@@ -1,23 +1,28 @@
-<header id="site-header" class="text-white absolute inset-x-0 z-20">
+<header id="site-header" class="text-white absolute inset-x-0 z-20 bg-accent">
   <div class="container">
     <nav class="flex min-h-[64px] items-center justify-between py-1 lg:min-h-[90px] lg:py-4">
       <!-- Logo -->
       <div>
         <a href="/">
-          Tyriens.fr
+          Tyriens.fr version #alpha
         </a>
       </div>
       <!-- Logo / End -->
 
       <!-- Navigation (Desktop) -->
       <ul class="hidden gap-x-7 xl:gap-x-10 text-sm font-bold lg:flex">
-        <li class="/">
+        <li class="">
           <a class="relative inline-flex items-center gap-x-2 leading-10 after:absolute after:bottom-[7px] after:left-0 after:h-[2px] after:bg-white after:transition-transform after:w-full after:origin-left after:scale-x-100" href="/">
             Accueil
           </a>
         </li>
-        <li class="#">
-          <a class="relative inline-flex items-center gap-x-2 leading-10 after:absolute after:bottom-[7px] after:left-0 after:h-[2px] after:bg-white after:transition-transform after:w-full after:origin-right hover:after:origin-left after:scale-x-0 hover:after:scale-x-100" href="/">
+        <li class="">
+          <a class="relative inline-flex items-center gap-x-2 leading-10 after:absolute after:bottom-[7px] after:left-0 after:h-[2px] after:bg-white after:transition-transform after:w-full after:origin-left after:scale-x-100" href="/creators">
+            Créateurs
+          </a>
+        </li>
+        <li class="">
+          <a class="relative inline-flex items-center gap-x-2 leading-10 after:absolute after:bottom-[7px] after:left-0 after:h-[2px] after:bg-white after:transition-transform after:w-full after:origin-right hover:after:origin-left after:scale-x-0 hover:after:scale-x-100" href="#">
             Galerie (prochainement)
           </a>
         </li>
@@ -49,9 +54,15 @@
 
           <ul class="sub-menu invisible absolute right-full z-20 -mr-9 flex w-52 origin-top-right flex-col bg-white dark:bg-gray-800 py-5 text-sm font-bold opacity-0 shadow-2xl transition-all">
             <li class="px-7">
-              <a class="flex flex-row-reverse items-center justify-between py-2 text-primary dark:text-white transition-colors hover:text-accent dark:hover:text-accent" href="#">
-                Prochainement
-              </a>
+              <% if current_user %>
+                <%= form_with url: destroy_user_session_path, method: :delete do |form| %>
+                  <%= form.submit "Déconnexion", class: "flex flex-row-reverse items-center justify-between py-2 text-primary dark:text-white transition-colors hover:text-accent dark:hover:text-accent" %>
+                <% end %>
+              <% else %>
+                <%= form_with(url: omniauth_authorize_path(:user, :discord), method: :post) do |form| %>
+                  <%= form.submit "Connexion avec Discord", class: "flex flex-row-reverse items-center justify-between py-2 text-primary dark:text-white transition-colors hover:text-accent dark:hover:text-accent" %>
+              <% end %>
+            <% end %>
             </li>
           </ul>
 
