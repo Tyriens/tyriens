@@ -15,7 +15,7 @@
               </li>
               <li class="">
                 <% if current_user.images.any? %>
-                  <%= link_to "Ma Galerie (prochainement avec #{pluralize(current_user.images.count, "image")})", "#", class: "text-lg transition-all text-primary opacity-100 hover:text-accent dark:text-white dark:hover:text-accent" %>
+                  <%= link_to "Ma Galerie (#{pluralize(current_user.images.count, "image")})", profile_gallery_path, class: "text-lg transition-all text-primary opacity-100 hover:text-accent dark:text-white dark:hover:text-accent" %>
                 <% else %>
                   <%= link_to "Ma Galerie (prochainement)", "#", class: "text-lg transition-all text-primary opacity-100 hover:text-accent dark:text-white dark:hover:text-accent" %>
                 <% end %>

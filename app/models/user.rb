@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :images
+  has_many :images, dependent: :destroy
 
   devise :database_authenticatable, :rememberable, :omniauthable
 
